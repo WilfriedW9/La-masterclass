@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');/* TODO: Faire l'animation de Pierre Guitard le boss */
+/* TODO: Faire le generique de la maison des amis imaginaires (en gros) */
+*,*::before,*::after{
+  box-sizing: border-box;
+}
+
+/* Body */
+body{
+  font-family: 'Bebas Neue', sans-serif;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  animation: color-switch 5s forwards;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes color-switch{
+  from{
+    background: black;
+  }
+  to{
+    background: rgb(149, 149, 149)
+  }
+}
+
+/* Container */
+.container{
+  margin-top: 3%;
+}
+
+/* Cards */
+.card{
+  text-align: center;
+  background: linear-gradient(#dd9797, #acafda);
+  width: 30%;
+  margin: auto;
+  box-shadow: 0px 3px 4px rgb(58, 58, 58) ;
+  transition: 0.15s;
+  animation: appear 3s forwards;
+
+}
+
+@keyframes appear {
+  0%{
+      opacity: 0%;
+  }
+  100%{
+      opacity:100%
+  }
+}
+
+.card:hover{
+  box-shadow: 5px 4px 1px rgb(56, 56, 56) ;
+}
+
+#first-card{
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Titres */
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'PT Serif', serif;
+}
+h1,h2 {
+  display: inline-block;
+}
+
+h1:after, h2:after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: black;
+  animation: lengthen 1.5s ease-in forwards ;
+  animation-delay: 1s;
+  opacity: 0%;
+}
+
+/* h1:hover{
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: black;
+  animation: lengthen 1.5s ease-in ;
+} */
+
+
+@keyframes lengthen{
+  0%{
+    opacity: 0%;
+    width: 0%;
+
+  }
+  100% {
+    opacity: 100%;
+    width: 100%;
+  }
+}
+
+
+
+/* Liens */
+a{
+  text-decoration: none;
+}
+
+#secret{
+  filter: blur(3px);
+  transition: 0.15s;
+  color: red;
+}
+
+#secret:hover{
+  filter: blur(0px);
+}
+
+/* #secret:visited{
+  color: rgb(237, 237, 237);
+} */
+
+ul{
+  list-style: none;
+  padding: 0;
+}
+
+/* Image */
+img{
+  height: 100px;
+  width: 100px;
+  clip-path: polygon(20% 0%, 0% 20%, 0 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 100% 59%, 100% 20%, 80% 0%, 50% 30%);
+  margin: auto;
+  border-radius: 50%;
+
+}
+
+
+/* Scrolling text */
+.scrolling-text{
+  opacity: 0%;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  bottom: 0%;
+  position: fixed;
+  white-space: nowrap;
+  animation: LeftToRight 5s infinite linear;
+  animation-delay: 3s;
+}
+
+@keyframes LeftToRight {
+  0%{
+    opacity: 100%;
+    transform: translateX(-100%);
+  }
+  100%{
+    opacity: 0%;
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes TopToBottom {
+  0%{
+    opacity: 100%;
+    transform: translateY(-100%);
+  }
+  100%{
+    opacity: 0%;
+    transform: translateY(100vw)
+  }
+}
+
+
+/* button */
+button{
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 1rem;
+  border-radius: 40px;
+  border: none;
+  white-space: nowrap;
+  transition: 1s;
+  padding: 10px 1rem;
+}
+
+button:hover{
+  transform: rotate(360deg);
+  color: gold;
+  background: black;
+}
+
+
+/* media queries */
+@media (max-width: 760px){
+  .container{
+    margin-top: 0;
+  }
+
+  .scrolling-text{
+    writing-mode: vertical-lr;
+    animation: TopToBottom 5s infinite linear;
+  }
+}
+
+@media (max-width:425px){
+  .card{
+    width: 50%;
+  }
+}
